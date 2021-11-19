@@ -29,6 +29,9 @@ public class Smartphone extends Product {
         if (super.matches(product, search)) {
             return true;
         }
+        if (getMaker().contains(search)) {
+            return true;
+        }
         return false;
     }
 

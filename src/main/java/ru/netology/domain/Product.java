@@ -42,17 +42,10 @@ public class Product {
             if (book.getName().contains(search)) {
                 return true;
             }
-            if (book.getAuthor().contains(search)) {
-                return true;
-            }
-            return false;
         }
         if (product instanceof Smartphone) {
             Smartphone smartphone = (Smartphone) product;
             if (smartphone.getName().contains(search)) {
-                return true;
-            }
-            if (smartphone.getMaker().contains(search)) {
                 return true;
             }
         }
