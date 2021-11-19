@@ -36,29 +36,6 @@ public class Product {
         return cost;
     }
 
-    public boolean matches(Product product, String search) {
-        if (product instanceof Book) {
-            Book book = (Book) product;
-            if (book.getName().contains(search)) {
-                return true;
-            }
-            if (book.getAuthor().contains(search)) {
-                return true;
-            }
-            return false;
-        }
-        if (product instanceof Smartphone) {
-            Smartphone smartphone = (Smartphone) product;
-            if (smartphone.getName().contains(search)) {
-                return true;
-            }
-            if (smartphone.getMaker().contains(search)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public String toString() {
         return "Product{" +
