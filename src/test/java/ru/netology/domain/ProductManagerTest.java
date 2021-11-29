@@ -2,20 +2,21 @@ package ru.netology.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.netology.manager.ProductManager;
 import ru.netology.repository.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductManagerTest {
-    private ProductRepository repository = new ProductRepository();
-    private ProductManager manager = new ProductManager(repository);
-    private Book firstBook = new Book(1, "Book 1", 500, "Pelevin");
-    private Book secondBook = new Book(2, "Book 2", 460, "Lermontov");
-    private Book thirdBook = new Book(3, "Book 3", 720, "Bronte");
-    private Smartphone firstSmart = new Smartphone(4, "Galaxy", 19999, "Samsung");
-    private Smartphone secondSmart = new Smartphone(5, "Galaxy", 19999, "Xiaomi");
-    private Smartphone thirdSmart = new Smartphone(6, "iPhone 12", 59999, "Apple");
-    private Smartphone fourthSmart = new Smartphone(7, "iPhone 13", 69999, "Apple");
+    private final ProductRepository repository = new ProductRepository();
+    private final ProductManager manager = new ProductManager(repository);
+    private final Book firstBook = new Book(1, "Book 1", 500, "Pelevin");
+    private final Book secondBook = new Book(2, "Book 2", 460, "Lermontov");
+    private final Book thirdBook = new Book(3, "Book 3", 720, "Bronte");
+    private final Smartphone firstSmart = new Smartphone(4, "Galaxy", 19999, "Samsung");
+    private final Smartphone secondSmart = new Smartphone(5, "Galaxy", 19999, "Xiaomi");
+    private final Smartphone thirdSmart = new Smartphone(6, "iPhone 12", 59999, "Apple");
+    private final Smartphone fourthSmart = new Smartphone(7, "iPhone 13", 69999, "Apple");
 
     @BeforeEach
     void add() {
@@ -75,5 +76,25 @@ class ProductManagerTest {
         Product[] expected = new Product[0];
         Product[] actual = manager.searchBy("Someone");
         assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldReturnTrueOnBook() {
+        assertTrue(firstBook.matches("Book 1"));
+    }
+
+    @Test
+    void shouldReturnFalseOnBook() {
+        assertFalse(firstBook.matches("Book 4"));
+    }
+
+    @Test
+    void shouldReturnTrueOnSmartphone() {
+        assertTrue(thirdSmart.matches("iPhone 12"));
+    }
+
+    @Test
+    void shouldReturnFalseOnSmartphone() {
+        assertFalse(fourthSmart.matches("iPhone 16"));
     }
 }

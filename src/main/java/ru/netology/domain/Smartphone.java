@@ -25,8 +25,9 @@ public class Smartphone extends Product {
         this.maker = maker;
     }
 
-    public boolean matches(Product product, String search) {
-        if (super.matches(product, search)) {
+    @Override
+    public boolean matches(String search) {
+        if (getName().contains(search)) {
             return true;
         }
         if (getMaker().contains(search)) {

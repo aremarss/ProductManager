@@ -25,8 +25,9 @@ public class Book extends Product {
         this.author = author;
     }
 
-    public boolean matches(Product product, String search) {
-        if (super.matches(product, search)) {
+    @Override
+    public boolean matches(String search) {
+        if (getName().contains(search)) {
             return true;
         }
         if (getAuthor().contains(search)) {
