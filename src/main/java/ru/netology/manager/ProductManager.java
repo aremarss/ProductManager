@@ -1,5 +1,8 @@
-package ru.netology.domain;
+package ru.netology.manager;
 
+import ru.netology.domain.Book;
+import ru.netology.domain.Product;
+import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
 public class ProductManager {
@@ -11,11 +14,6 @@ public class ProductManager {
 
     public void add(Product item) {
         repository.save(item);
-    }
-
-    public Product[] delete(int id) {
-        repository.removeById(id);
-        return new Product[getAll().length];
     }
 
     public Product[] getAll() {
@@ -33,11 +31,6 @@ public class ProductManager {
             }
         }
         return result;
-    }
-
-    public Product[] searchById(int id) {
-        repository.findById(id);
-        return new Product[id];
     }
 
     public boolean matches(Product product, String search) {
